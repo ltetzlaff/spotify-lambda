@@ -7,9 +7,6 @@
       "sourceMap": true,
       "declaration": true,
       "strict": true,
-      "outDir": "dist",
-      "lib": [
-        "esnext"
-      ]
+      "outDir": "dist"
   }
 }
