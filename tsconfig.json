@@ -1,0 +1,15 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+      "module": "none",
+      "moduleResolution": "node",
+      "target": "es6",
+      "sourceMap": true,
+      "declaration": true,
+      "strict": true,
+      "outDir": "dist",
+      "lib": [
+        "esnext"
+      ]
+  }
+}
