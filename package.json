@@ -1,0 +1,37 @@
+{
+  "name": "spotify-actions",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/handlers",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --watch || true",
+    "buildOnce": "tsc",
+    "lint": "tslint --format stylish --project .",
+    "prettier": "prettier --config node_modules/tslint-lt/.prettierrc.yml --write \"{,!node_modules/}**/*.{ts,tsx}\"",
+    "test": "npm run buildOnce && npm run lint && npm run prettier",
+    "prepublish": "npm run buildOnce"
+  },
+  "dependencies": {
+    "source-map-support": "^0.5.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "8.10.1",
+    "@types/dotenv": "^4.0.3",
+    "@types/node": "^8.0.57",
+    "dotenv": "^6.0.0",
+    "serverless-webpack": "^5.1.1",
+    "ts-loader": "^4.2.0",
+    "tslint-lt": "^1.6.4",
+    "typescript": "^2.8.1",
+    "webpack": "^4.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ai-hackathon-affective-computing/spotify-lambda.git"
+  },
+  "author": "https://github.com/ai-hackathon-affective-computing/spotify-lambda.git",
+  "license": "MIT"
+}
