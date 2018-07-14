@@ -1,0 +1,48 @@
+service: affective-computing-spotify
+
+# Add the serverless-webpack plugin
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-west-1
+  profile: aihackathon
+  memorySize: 2048
+  timeout: 20
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "*"
+
+functions:
+  hello:
+    handler: dist/handlers.hello
+    events:
+      - http:
+          method: get
+          path: hello
+          cors: true
+  # login:
+  #   handler: dist/handlers.login
+  #   events:
+  #     - http:
+  #         method: get
+  #         path: login
+  #         cors: true
+  # redirect:
+  #   handler: dist/handlers.redirect
+  #   events:
+  #     - http:
+  #         method: get
+  #         path: redirect
+  #         cors: true
+  # api:
+  #   handler: dist/handlers.api
+  #   events:
+  #     - http:
+  #         method: get
+  #         path: api
+  #         cors: true
