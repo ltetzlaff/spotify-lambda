@@ -1,5 +1,5 @@
 {
-  "name": "spotify-actions",
+  "name": "spotify-lambda",
   "version": "0.0.0",
   "description": "",
   "main": "dist/handlers",
