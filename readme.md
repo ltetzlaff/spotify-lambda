@@ -41,4 +41,4 @@ npm test
 [guides](https://developer.spotify.com/documentation/general/guides/scopes/)
 
 
-Put your stuff in `.env` file.
+Don't forget to put your stuff in `.env` and `.serverless.env.yml` file.
