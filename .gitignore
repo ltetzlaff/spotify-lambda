@@ -1,6 +1,8 @@
 serverless.env.yml
 .env
-dist
+
+src/**/*.d.ts
+src/**/*.js*
 
 # package directories
 node_modules
