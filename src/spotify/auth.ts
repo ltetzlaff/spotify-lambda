@@ -1,7 +1,11 @@
 import Routes from "./routes"
 import OAuth2 from "improved/dist/oauth2"
 import authCache from "../utils/auth-cache"
-import { SPOTIFY_CLIENT_ID, SPOTIFY_SECRET, SPOTIFY_REDIRECT_URI } from "../utils/envs"
+import {
+  SPOTIFY_CLIENT_ID,
+  SPOTIFY_SECRET,
+  SPOTIFY_REDIRECT_URI
+} from "../utils/envs"
 
 const config = {
   clientID: SPOTIFY_CLIENT_ID,
