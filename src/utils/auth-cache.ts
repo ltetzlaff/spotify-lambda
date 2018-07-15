@@ -1,14 +1,14 @@
-import { ITokenAnswer } from "improved/dist/oauth2"
+import ISpotifyToken from "../spotify/token"
 import s3 from "./s3"
 
 export default class AuthCache {
   private static cacheFile = "accessToken.json"
 
-  public static async write(token: ITokenAnswer): Promise<boolean> {
+  public static async write(token: ISpotifyToken): Promise<boolean> {
     return s3.write(AuthCache.cacheFile, JSON.stringify(token))
   }
 
-  public static async read(): Promise<ITokenAnswer | undefined> {
+  public static async read(): Promise<ISpotifyToken | undefined> {
     const output = await s3.read(AuthCache.cacheFile)
     const request = await output.httpRequest
     try {
