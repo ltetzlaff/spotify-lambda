@@ -33,12 +33,22 @@ Building, Linting, Formatting, Testing:
 npm test
 ```
 
-## Run
+## Deploy
 
-[developer.spotify.com](https://developer.spotify.com/dashboard/applications)
+- Put your stuff in `.env` and `.serverless.env.yml` file
 
+```bash
+npm run deploy
+```
+
+## Use
+
+- Go to [spotify dev dashboard](https://developer.spotify.com/dashboard/applications)
+  - Set redirect uri to be this app's public url for the `/redirect` handler
+  - Put `SPOTIFY_SECRET`, `SPOTIFY_CLIENT_ID` and `SPOTIFY_REDIRECT_URI` in your `.env`
+- Send users to `/login` to approve login
+- Send users to `/api` to retrieve stuff from API
+
+## Useful Ressources
 
 [guides](https://developer.spotify.com/documentation/general/guides/scopes/)
-
-
-Don't forget to put your stuff in `.env` and `.serverless.env.yml` file.
