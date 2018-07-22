@@ -6,6 +6,9 @@ import parseCookies from "../utils/parse-cookies"
 import auth from "../spotify/auth"
 import authCache from "../utils/auth-cache"
 import ISpotifyToken from "../spotify/token"
+import { getRandomString } from "../utils/random"
+
+const TOKEN_LENGTH = 16
 
 const stateMisMatchReponse = {
   statusCode: ErrorCodes.Unauthorized,
@@ -29,13 +32,19 @@ const redirect: Handler = async (
     return
   }
 
-  const token = (await (await auth).requestToken(code)) as ISpotifyToken
-  await authCache.write(token)
+  // generate new token
+  const token = getRandomString(TOKEN_LENGTH)
+
+  const spotifyToken = (await (await auth(token)).requestToken(
+    code
+  )) as ISpotifyToken
+  await authCache.write(token, spotifyToken)
 
   const response = {
     statusCode: 200,
     body: JSON.stringify({
-      message: "OK"
+      message: "Authenticated",
+      token
     })
   }
 

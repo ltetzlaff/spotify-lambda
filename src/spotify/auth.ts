@@ -15,6 +15,7 @@ const config = {
   authorizeURL: Routes.authorize
 }
 
-const oauth = (async () => new OAuth2(config, await authCache.read()))()
+const oauth = async (token: string) =>
+  new OAuth2(config, await authCache.read(token))
 
 export default oauth
