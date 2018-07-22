@@ -1,12 +1,17 @@
 plugins:
   - serverless-dotenv-plugin
   - serverless-webpack
+  - serverless-domain-manager
 
 service: ${file(./serverless.env.yml):service}
 
 custom:
-  dotenv:
-    see: https://github.com/infrontlabs/serverless-dotenv-plugin/issues/5
+  customDomain:
+    domainName: ${file(./serverless.env.yml):domainName}
+    basePath: ${file(./serverless.env.yml):basePath}
+    certificateName: ${file(./serverless.env.yml):certificateName}
+    createRoute53Record: true
+    endpointType: 'regional'
 provider:
   name: aws
   runtime: nodejs8.10
