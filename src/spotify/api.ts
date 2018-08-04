@@ -1,8 +1,12 @@
 import Routes from "./routes"
 import oauth from "./auth"
+import Oauth2 from "improved/dist/oauth2"
 
+/**
+ * @throws UnauthentifiedError
+ */
 async function get(token: string, url: string) {
-  return (await oauth(token)).authenticatedGet(url)
+  return ((await oauth(token)) as Oauth2).authenticatedGet(url)
 }
 
 async function getUserInfo(token: string) {

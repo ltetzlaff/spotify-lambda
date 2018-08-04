@@ -3,21 +3,25 @@ import spotify from "../spotify/api"
 
 const api: Handler = async (
   event: APIGatewayEvent,
-  context: Context,
+  _: Context,
   cb: Callback
 ) => {
   const token = event.headers.Token
-  const info = await spotify.getUserInfo(token)
+  try {
+    const info = await spotify.getUserInfo(token)
 
-  const response = {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: "UserInfo",
-      body: info
-    })
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: "UserInfo",
+        body: info
+      })
+    }
+
+    cb(undefined, response)
+  } catch (e) {
+    return e.handle(cb)
   }
-
-  cb(undefined, response)
 }
 
 export default api

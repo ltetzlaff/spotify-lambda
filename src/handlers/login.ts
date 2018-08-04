@@ -2,11 +2,11 @@ import { APIGatewayEvent, Callback, Context, Handler } from "aws-lambda"
 import { getRandomString } from "../utils/random"
 import Scope from "../spotify/scope"
 import { STATE_COOKIE_KEY, SPOTIFY_REDIRECT_URI } from "../utils/envs"
-import auth from "../spotify/auth"
+import oauth from "../spotify/auth"
 
 const login: Handler = async (
   event: APIGatewayEvent,
-  context: Context,
+  _: Context,
   cb: Callback
 ) => {
   const state = getRandomString()
@@ -22,15 +22,17 @@ const login: Handler = async (
   }
 
   const token = event.headers.Token
+
+  const auth = await oauth(token, cb)
+  if (!auth) return
+
   const response = {
     statusCode: 302,
     headers: {
-      Location: (await auth(token)).getRequestAuthURL(state, query),
+      Location: auth.getRequestAuthURL(state, query),
       "Set-Cookie": `${STATE_COOKIE_KEY}=${state};`
     }
   }
-
-  cb(undefined, response)
 }
 
 export default login
