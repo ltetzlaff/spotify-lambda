@@ -15,7 +15,7 @@ custom:
 provider:
   name: aws
   runtime: nodejs8.10
-  region: eu-west-1
+  region: eu-central-1
   profile: ${file(./serverless.env.yml):profile}
   memorySize: 512
   timeout: 20
@@ -53,4 +53,18 @@ functions:
       - http:
           method: get
           path: api
+          cors: true
+  room:
+    handler: src/index.room
+    events:
+      - http:
+          method: get
+          path: room
+          cors: true
+  join:
+    handler: src/index.join
+    events:
+      - http:
+          method: get
+          path: join
           cors: true
