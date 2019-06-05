@@ -8,7 +8,7 @@ const api: Handler = async (
 ) => {
   const token = event.headers.Token
   try {
-    const info = await spotify.getUserInfo(token)
+    const info = await spotify.getUserTopTracks(token)
 
     const response = {
       statusCode: 200,
